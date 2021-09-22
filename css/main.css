@@ -1,0 +1,15 @@
+html,
+body {
+  margin: 0px;
+}
+
+#editor {
+  margin: auto;
+  text-align: center;
+  border: 3px solid green;
+}
+
+#panel {
+  margin: auto;
+  text-align: center;
+}
