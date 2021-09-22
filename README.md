@@ -10,4 +10,4 @@ The editor allows:
 <br/>
 
 ### Try it out!
-[Online Map Editor]()
+[Online Map Editor](https://raw.githack.com/matiasvlevi/MapEditor/master/index.html)
