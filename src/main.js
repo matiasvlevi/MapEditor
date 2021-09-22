@@ -6,7 +6,7 @@ let grid;
 function setup() {
   let canvas = createCanvas(wnx, wny);
   canvas.parent('editor');
-  frameRate(30);
+  frameRate(60);
   grid = new Grid(0, 0, 25, 25, 32, 24);
 }
 let tick = 0;

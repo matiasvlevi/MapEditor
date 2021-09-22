@@ -17,4 +17,4 @@ setTimeout(() => {
       alert("File not supported, .json files only");
     }
   });
-}, 10);
+}, 1);

@@ -3,7 +3,7 @@
 <head>
   <link rel="stylesheet" href="css/main.css">
   <script src="lib/p5.js"></script>
-
+  <script src="src/colorCodes.js"></script>
   <script src="src/grid.js"></script>
   <script src="src/main.js"></script>
 
@@ -16,8 +16,18 @@
   <div id="editor">
 
   </div>
+
   <div id="panel">
-    <input type="file" id="loadMap">
+    <button onClick="grid.setDrawType('wall')" id="wallbutton">Wall</button>
+    <button onClick="grid.setDrawType('spawn')" id="spawnbutton">Spawn</button>
+    <button onClick="grid.setDrawType('type1')" id="type1button">TYPE1</button>
+    <button onClick="grid.setDrawType('type2')" id="type2button">TYPE2</button>
+    <button onClick="grid.setDrawType('type3')" id="type3button">TYPE3</button>
+    <button id="deletebutton" onClick="grid.toggleDelete()" style="background-color: rgb(255,100,0)">Erase: false</button>
+
+  </div>
+  <div id="panel">
+    <input type="file" id="loadMap" />
     <button onClick="grid.save()">Save</button>
   </div>
 </body>

@@ -9,6 +9,11 @@ class Grid {
     this.values = [];
     this.t = 0;
     this.clickedCount = 0;
+    this.drawType = 'wall';
+    this.delete = false;
+  }
+  setDrawType(type) {
+    this.drawType = type;
   }
   addBlock(x, y, type = 'wall') {
     let count = 0;
@@ -29,13 +34,35 @@ class Grid {
     }
 
   }
+  deleteBlock(x, y) {
+    let count = 0;
+    for (let i = 0; i < this.values.length; i++) {
+      if (this.values[i].x === x && this.values[i].y === y) {
+        count++;
+      }
+    }
+    if (count !== 0) {
+      let index = this.values.findIndex(block => {
+        return block.x === x && block.y === y;
+      })
+      this.values.splice(index, 1);
+    }
 
+  }
+  toggleDelete() {
+
+    this.delete = !this.delete;
+    document.getElementById('deletebutton').textContent = 'Erase: ' + this.delete;
+  }
   render(tick) {
     for (let i = 0; i < this.nbx; i++) {
       for (let j = 0; j < this.nby; j++) {
+        let type = 'wall';
         let isPresent = this.values.find(block => {
+          type = block.type;
           return block.x === i && block.y === j;
         })
+
         if (
           mouseX > (i * this.w) + this.x &&
           mouseX < ((i + 1) * this.w) + this.x &&
@@ -44,14 +71,18 @@ class Grid {
         ) {
 
           if (mouseIsPressed && this.clickedCount === 0) {
-            this.addBlock(i, j);
-
+            if (!this.delete) {
+              this.addBlock(i, j, this.drawType);
+            } else {
+              this.deleteBlock(i, j);
+            }
             this.clickedCount++;
           }
 
           fill(0, 100);
         } else if (isPresent) {
-          fill(0)
+
+          fill.apply(null, COLOR_CODES[type])
         } else {
           noFill();
         }
